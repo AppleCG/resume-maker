@@ -226,7 +226,7 @@
         <div class="header-left">
             <h1>姓　名</h1>
             <div class="meta">
-                <div>男 丨 2005-04 丨 湖北省-武汉市</div>
+                <div>男 丨 2000-07 丨 北京市</div>
                 <div>学历 丨 手机号 丨 邮箱</div>
             </div>
         </div>

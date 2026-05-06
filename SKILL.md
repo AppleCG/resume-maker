@@ -14,16 +14,36 @@ description: "制作、定制、更新简历。当用户提到'简历'、'resume
 ```
 resume-maker/
 ├── SKILL.md
+├── resume-maker_notes.md        # 操作规范（每次调用先读此文件）
 └── resources/
-    ├── self_profile.md         # 你的背景、技能、求职偏好
-    ├── resume_base.md          # 全量简历母版（所有经历）
-    ├── project_template.md     # 项目文件模板
-    └── projects/               # 每个项目一个文件
+    ├── self_profile.md          # 用户档案（仅个人信息，不含项目经历）
+    ├── resume_base.md           # 全量母版（个人信息摘要 + 项目索引）
+    ├── project_template.md      # 项目文件模板
+    ├── template_word.md         # Word/WPS 简历排版指南
+    ├── template_html.md         # HTML 简历模板（含 CSS 样式骨架）
+    └── projects/                # 每段经历一个 .md 文件（权威来源）
         ├── 项目A.md
         └── 项目B.md
 ```
 
+### 文件职责
+
+| 文件 | 内容 | 是否包含项目经历 |
+|------|------|:--:|
+| `self_profile.md` | 基本信息、求职意向、教育背景、技能、证书、自我评价 | 否 |
+| `resume_base.md` | 个人信息摘要 + 项目索引表格（引用 projects/） | 仅索引 |
+| `projects/*.md` | 每段经历的完整详情（STAR 法则） | 权威来源 |
+
+### 模板文件
+
+- **Word 输出**：读取 `template_word.md`，按其排版规范生成 .docx
+- **HTML 输出**：读取 `template_html.md`，保持 CSS 不变，将母版内容填入 HTML 骨架
+
 ## 工作流程
+
+### 第零步：读取操作规范（每次必做）
+
+**在开始任何操作前，先读取 `resume-maker_notes.md`**，了解当前用户的档案架构、路径约定和操作约束。
 
 ### 第一步：读取用户档案
 
@@ -84,14 +104,9 @@ resume-maker/
 
 **Markdown 输出**：直接输出格式良好的 Markdown 简历。
 
-**Word（.docx）输出**：使用 `docx` 技能生成专业排版的 .docx 文件。排版要求：
-- 页面：A4 或 US Letter
-- 字体：中文用微软雅黑/宋体，英文用 Arial/Calibri
-- 标题 14-16pt 加粗，正文 10-11pt
-- 段落间距适当，留白充足
-- 各节用清晰的分隔线区分
+**Word（.docx）输出**：读取 `resources/template_word.md`，按其中定义的页面布局、字体、表格、项目符号等排版规范生成 Word 文档。
 
-**PDF 输出**：先生成 .docx，再转换为 PDF。
+**HTML 输出**：读取 `resources/template_html.md`，保持 CSS 样式完全不变，将母版中个人信息和项目经历填入 HTML 骨架。用户可在浏览器打开后打印为 PDF。
 
 ### 第七步：审阅 & 修改
 
